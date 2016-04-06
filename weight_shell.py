@@ -183,6 +183,11 @@ def create_atmosphere(Sounding):
 
     print len(Atmosphere), ' layers in model atmosphere'
     print 'Total precipitable water = ',TPW,' kg/m^2'
+    Atmosphere =  (pd.DataFrame(
+        [{key:getattr(x, key) for key in ['pbar','Tbar','rho','rhowv','DZ','qbar','mass','wvmass']}
+         for x in Atmosphere])
+         .set_index('pbar', drop=False).sort_index())
+    Atmosphere['Zbar'] = Atmosphere.set_index('pbar').sort_index(ascending=False).DZ.cumsum()
     return Atmosphere
 
 # for layer in Atmosphere:
