@@ -23,7 +23,7 @@
 %%% To be entered only if twocol option is used
 
 \journal{jamc}
-
+\usepackage{gensymb}
 %  Please choose a journal abbreviation to use above from the following list:
 % 
 %   jamc     (Journal of Applied Meteorology and Climatology)
@@ -94,9 +94,71 @@ Passive instruments such as AMSU and CrIS require a radiative transfer model to 
 \par In this paper, a simple radiative transfer model is constructed for the purpose of studying the effects of environmental permutations on AMSU observation.
 For input, this RTM receives a  single radiosonde file containing pressure, temperature, and dew point information.
 By superposition of the radiative absorption from dry air and water vapor, an optical depth can be computed at each layer of atmosphere.
-These optical depths are integrated and transformed to total monochromatic transmission from either the top-of-atmosphere or surface.
+These optical depths are integrated and transformed to total monochromatic transmission from either the top-of-atmosphere or the surface.
+
+\section{Methods}
+
+\subsection{Atmospheric Profile}
+
+\subsection{Layers}
+
+\subsection{Absorption}
+
+\subsection{Transmission}
+
+\subsection{Weights}
+
+\subsection{Experiments}
+
+\paragraph*{Case Study} Canada vs Brazil
+
+\paragraph{Low frequency channels (3-10) Module A }
+ Compute and plot the weighting functions for channels 3-10 for both soundings (same plot, use colors and/or dashes to distinguish between soundings).  How do the weighting functions differ between the two cases?
+ 
+\paragraph{High frequency channels (18-20)}
+Do the same for channels 18-20.
+
+\paragraph{Spectra}
+Compute and plot (on the same plot) the complete spectra of microwave brightness temperature for the two soundings — 0.1 to 300 GHz at intervals of 0.1 GHz.   Describe the differences in results. 
+Attribute differences to (a) differences in the surface temperature, (b) differences in the atmospheric temperature profile, and (c) differences in the atmospheric humidity profile.
+
+\paragraph{Emissivity}
+For just the tropical sounding, plot the spectra for two cases:  emissivity equal to 1  and emissivity equal to 0.5.  What do your results tell you about the ranges of frequencies for which the atmosphere is opaque?
+Repeat the above for the polar sounding and describe what changes relative to the previous results.
+
+\paragraph{Elevation angle}
+Again, plot spectra for the tropical sounding, this time for two nadir angles θ:  0 degrees and 55 degrees.  Discuss the resulting differences.
+
+\section{Results}
+
+\subsection{Weighting Functions A}
+Compute and plot the weighting functions for channels 3-10 for both soundings (same plot, use colors and/or dashes to distinguish between soundings).  How do the weighting functions differ between the two cases?
+\subsection{Weighting Functions B}
+Do the same for channels 18-20.
+
+\subsection{Spectra}
+Compute and plot (on the same plot) the complete spectra of microwave brightness temperature for the two soundings — 0.1 to 300 GHz at intervals of 0.1 GHz.   Describe the differences in results.
+\subsubsection{Surface Temperature}
+Attribute differences to (a) differences in the surface temperature
+\subsubsection{Temperature Profile}
+(b) differences in the atmospheric temperature profile
+\subsubsection{Humidity}
+(c) differences in the atmospheric humidity profile.
+
+\subsection{Emissivity}
+\subsubsection{$\epsilon = 1$}
+For just the tropical sounding, plot the spectra for two cases:  emissivity equal to 1  and emissivity equal to 0.5.
+\subsubsection{$\epsilon = 0.5$}
+What do your results tell you about the ranges of frequencies for which the atmosphere is opaque?
+Repeat the above for the polar sounding and describe what changes relative to the previous results.
+
+\subsection{Elevation}
+Again, plot spectra for the tropical sounding, this time for two nadir angles θ:  0 degrees and 55 degrees.  Discuss the resulting differences.
+\subsubsection{$\theta = 0 \degree{} $}
+\subsubsection{$\theta = 55 \degree{} $}
 
 
+\section{Conclusion}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % REFERENCES
