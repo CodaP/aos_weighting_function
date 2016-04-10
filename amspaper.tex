@@ -237,6 +237,8 @@ The average values of brightness temperature for the Brazilian case are nearly 4
 Additionally, there is a downward slope of brightness temperatures from Brazil as frequency increases.
 This effect is not apparent in the Canadian case.
 Furthermore, the absorption band of oxygen at 22~GHz does not produce a noticeable effect in the Canadian brightness temperatures, but it appears as a small dip in those from Brazil.
+
+Oxygen is responsible for the bands seen at 20, 60, and 118 GHz, and water vapor absorbs strongly at 183~GHz. Water vapor also weakly absorbs on a continuum with higher frequencies being absorbed more.
 Within the strongest absorption lines, these spectra look remarkably similar.
 
 \begin{figure}
@@ -264,9 +266,11 @@ In channel~18, corresponding to 184~GHz, the altitude of peak absorption is loca
 If brightness temperature is read at 184~GHz, it comes out to about 240~K for both Brazil and Canada.
 This matches the temperatures in the profile measured at the altitudes of peak emission, which confirms that the radiative transfer model is consistent.
 
-You can see the Brazilian brightness temperatures diminish as continuum absorption increases with higher frequencies.
-Outside major oxygen and water vapor absorption bands, absorption is mostly governed by the water vapor continuum absorption.
-
+The differences in brightness temperature spectra within the strong absorption bands can be partially explained by the differences in temperature profile.
+Most Canadian brightness temperatures observed within these bands appear to be greater than those from Brazil.
+By examining \autoref{fig:weighting_a}, we see that the weighting functions, for the higher frequency AMSU-A channels pertaining to the first strong absorption band, are aligned between Brazil and Canada.
+Therefore, differences in observed brightness temperatures in these channels should only be caused by differences in emission at the most highly weighted layers.
+The evidence of warmer Canadian brightness temperatures is consistent with warmer Canadian temperatures in the stratosphere and the stratospheric layers receiving the highest weight at that channel.
 
 \begin{figure}
 	\centering
@@ -277,19 +281,21 @@ Outside major oxygen and water vapor absorption bands, absorption is mostly gove
 
 \subsubsection{Humidity}
 
-Brazil has much more moisture than Canada
+\autoref{fig:qbar} shows that the Brazilian radiosonde measured much more moisture than the Canadian.
+Considering the entire atmosphere, the Brazilian atmosphere was found to contain 55.22~kg/$m^2$ water vapor, and the Canadian atmosphere only contained 3.12~kg/$m^2$.
+The profile confirms that water vapor is concentrated in the troposphere for both locations and peaks at lowest altitudes.
+Water vapor is a strong absorber, it has one particularly strong band at 183 GHz.
+As shown in \autoref{fig:spec}, a dip in brightness temperature occurs at this frequency in both locations.
+By referencing \autoref{tab:amsub} and \autoref{fig:weighting_b} we see that the brightness temperature measured from space is primarily influenced by the air temperature at a height of 10~km in Brazil and 4~km in Canada.
+According to \autoref{fig:tdry}, these altitudes correspond to about 240~K for Brazil and 250~K for Canada.
+The brightness temperature at the local minima of the 183~GHz water vapor dip agrees with these values.
 
-Water vapor concentrated in the troposphere and peaking at a few km altitude.
 
-Brazil total precipitable water much greater
-
-brazil: 52.22 kg/$m^2$
-
-canada: 3.12 kg/$m^2$
-
-Water vapor is a strong absorber, it has one particularly strong band at 183 GHz
-
-Oxygen is responsibile for the bands seen at 20, 60, and 118 GHz
+You can see the Brazilian brightness temperatures diminish as continuum absorption increases with higher frequencies.
+Outside major oxygen and water vapor absorption bands, absorption is mostly governed by the water vapor continuum absorption.
+Absorption and emission by water vapor usually occurs at cooler temperatures than surface emission.
+Therefore, partial absorption creates a cold bias in the predicted brightness temperatures, and this bias strengthens as absorption strengthens.
+The baseline brightness temperatures in the Brazilian case remains relatively constant as a result of having little water vapor.
 
 \begin{figure}
 	\centering
@@ -301,9 +307,7 @@ Oxygen is responsibile for the bands seen at 20, 60, and 118 GHz
 \subsection{Emissivity}
 
 
-\begin{figure}Most of the difference occurs at lower frequencies
-The received brightness temperature is much higher when viewed at a slant. With the greater optical distance, a much larger component of brightness temperature seems to be coming from the surface. Reflected brightness temperatures off the surface are presumed to be optically thicker as well. This all translates to a greater amount of flux being available at the surface which can be detected by the satellite throught the relatively transparent atmosphere.
-Oxygen absorption at 60 GHz remains about constant. Most radiation in this band is absorbed at high altitudes (in excess of 20km) as can be seen in the channel 10 weighting function.
+\begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/brazil_emiss}
 	\caption{Brazil emissivity}
@@ -318,14 +322,33 @@ Oxygen absorption at 60 GHz remains about constant. Most radiation in this band 
 	\label{fig:cemiss}
 \end{figure}
 
-\subsubsection{$\epsilon = 1$}
-For just the tropical sounding, plot the spectra for two cases:  emissivity equal to 1  and emissivity equal to 0.5.
-\subsubsection{$\epsilon = 0.5$}
-What do your results tell you about the ranges of frequencies for which the atmosphere is opaque?
-Repeat the above for the polar sounding and describe what changes relative to the previous results.
+\subsubsection{Brazil}
+
+The emissivity experiment results for Brazil in \autoref{fig:bemiss} show significant differences at the lower frequencies after changing the surface emissivity.
+At frequencies above 150~GHz, the surface emissivity has little effect on predicted brightness temperatures observed from space.
+There is also little effect within the strong absorption bands.
+This makes sense because higher absorption at high frequencies and absorption bands obscures the surface and masks the effect of emissivity.
+In bands of high transmission, halving the emissivity approximately halves brightness temperature.
+Therefore, brightness temperatures at the lowest frequencies, where the atmosphere is nearly transparent, appear to be halved.
+In between the two extremes are regions of partial absorption, which create a warm bias in the observed brightness temperatures because the model atmosphere is non-scattering and radiates as a blackbody.
+
+\subsubsection{Canada}
+
+The results of halving emissivity in the Canadian case are shown in \autoref{fig:cemiss}.
+Here we see that the atmosphere is mostly transparent in all bands except the specific strongly-absorbing bands.
+The continuum absorbing effect of water vapor is now evident.
+This is because the atmosphere and surface are now radiating at substantially different brightness temperatures and additional absorption and emission by the atmosphere is contrasted by a very cold surface. 
 
 \subsection{Elevation}
 
+The effect of changing elevation angle in the Brazilian case are shown in \autoref{fig:elevation}.
+We have seen that one of the most important components of the predicted spectra is surface emission.
+Although increasing the slant angle increases the optical depth of each absorbing layer and equates to an inflation of the weighting-peak altitudes, the effects shown are most likely caused by a decrease in transmission.
+The increase in weighting-peak height is shown in \autoref{fig:elevation_weight}, and usually amounts to about 3~km.
+In the lowest highest frequencies in the AMSU-A bands this actually increases brightness temperatures.
+However, the resulting temperature would still be much less than the observed brightness temperature.
+Therefore, the depression in brightness temperatures observed in \autoref{fig:elevation} is probably due to reduced transmission from the surface.
+This is still captured in \autoref{fig:elevation_weight} by the comparatively larger area under each curve at 55\degree{} elevation when compared to nadir.
 
 \begin{figure}
 	\centering
@@ -334,26 +357,22 @@ Repeat the above for the polar sounding and describe what changes relative to th
 	\label{fig:elevation}
 \end{figure}
 
-Again, plot spectra for the tropical sounding, this time for two nadir angles θ:  0 degrees and 55 degrees.  Discuss the resulting differences.
-\subsubsection{$\theta = 0 \degree{} $}
-\subsubsection{$\theta = 55 \degree{} $}
-
-Most of the difference occurs at lower frequencies
-
-The received brightness temperature is much higher when viewed at a slant. With the greater optical distance, a much larger component of brightness temperature seems to be coming from the surface. 
-
-Reflected brightness temperatures off the surface are presumed to be optically thicker as well. This all translates to a greater amount of flux being available at the surface which can be detected by the satellite throught the relatively transparent atmosphere.
-
-Oxygen absorption at 60 GHz remains about constant. Most radiation in this band is absorbed at high altitudes (in excess of 20km) as can be seen in the channel 10 weighting function.
-
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/elevation_weights}
+	\caption{Elevation weighting function}
+	\label{fig:elevation_weight}
+\end{figure}
 
 \section{Conclusion}
+
+From the results it was shown that the brightness temperature received in space is primarily a composition of two sources.
+First there is the surface emission
+Then there is the atmospheric emission
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % REFERENCES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- This shows how to enter the commands for making a bibliography using
- BibTeX. It uses references.bib and the ametsoc2014.bst file for the style.
 
  \bibliographystyle{ametsoc2014}
  \bibliography{references}
