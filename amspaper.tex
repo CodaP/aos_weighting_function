@@ -24,7 +24,9 @@
 
 \journal{jamc}
 \usepackage{gensymb}
-\usepackage{graphicx} 
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
 
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 %  Please choose a journal abbreviation to use above from the following list:
@@ -101,24 +103,87 @@ These optical depths are integrated and transformed to total monochromatic trans
 
 \section{Methods}
 
+For all experiments, surface temperature was assumed equal to the temperature of the lowest radiosonde measurement.
+
+The surface, in all cases except the emissivity experiments, is assumed to radiate as a blackbody at thermal equilibrium. That is, the emissivity is equal to 1 at all wavelengths.
+
+The frequencies corresponding to the referenced AMSU channels are defined in \autoref{tab:amsua} and \autoref{tab:amsub}.
+
+\begin{table}
+	\centering
+	\caption{AMSU-A Channels}
+	\begin{tabular}{cc}
+		\toprule
+		Channel	& Frequency (GHz)\\
+		\midrule
+	    3 & 50.3000 \\
+	    4 & 52.8000 \\
+	    5 & 53.7110 \\
+	    6 & 54.4000 \\
+	    7 & 54.9400 \\
+	    8 & 55.5000 \\
+	    9 & 57.2900 \\
+	    10 & 57.5070 \\
+	    \bottomrule
+	\end{tabular}
+	\label{tab:amsua}
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{AMSU-B Channels}
+	\begin{tabular}{cc}
+		\toprule
+		Channel	& Frequency (GHz)\\
+		\midrule
+		16 & 89.00 \\
+		17 & 150.0 \\
+		18 & 184.31 \\
+		19 & 186.31 \\
+		20 & 190.31 \\
+	    \bottomrule
+	\end{tabular}
+	\label{tab:amsub}
+\end{table}
+
 \subsection{Atmospheric Profile}
 
-For all experiments, surface temperature was assumed equal to the mean temperature of the 
+Before an atmospheric profile can be computed, environmental data must be ingested from a radiosonde file.
+Contained in the radiosonde data is a temperature and dew point profile at various pressures.
 
 \subsection{Layers}
 
+A model atmosphere is partitioned into homogeneous atmospheric layers, each possessing the mean value of environmental variables and a geometric height.
+The geometric height associated with each layer is a required to calculate optical depths.
+This is derived from a form of the hydrostatic equation rather than being obtained from the radiosonde's GPS altitude.
+
 \subsection{Absorption}
+
+The total optical depth, $\tau$, of each layer is computed by adding optical depth components from dry air and water vapor.
+These components are computed from the product of air mass and mass extinction coefficient.
 
 \subsection{Transmission}
 
+An integral over optical depths is performed by computing a cumulative sum.
+According to Beer's law, the antilogarithm of these depths results in the total transmission to that layer from either the top-of-atmosphere or surface, depending on the direction of the cumulative sum.
+By Schwarzschild's equation, the weighting function takes the value of the derivative of transmission at each level.
+A discrete difference approximates this derivative.
+
 \subsection{Weights}
+
+The resulting weights associated with each layer can finally be divided by geometric depth their respective layers to derive the weight as a function of geometric depth.
 
 \subsection{Experiments}
 
-\paragraph*{Case Study} Canada vs Brazil
+\paragraph*{Case Study} For the following experiments, two cases of atmosphere will be compared.
+One case will study the Arctic atmosphere and the other will study the Tropical.
+The Arctic case uses a radiosonde launched from Churchill, Canada at 12Z on the first of March, 2012.
+The Tropical radiosonde was launched from Boa Vista, Brazil, at the same date and time.
 
 \paragraph{Low frequency channels (3-10) Module A }
- Compute and plot the weighting functions for channels 3-10 for both soundings (same plot, use colors and/or dashes to distinguish between soundings).  How do the weighting functions differ between the two cases?
+Shown in \autoref{fig:weighting_a} are the weighting functions for the AMSU-A channels for both the Canadian and Brazilian cases.
+These results show some similarity between the cases in the relative magnitudes and distributions of weights.
+However, the peak weights in Canadian case almost always occur at a lower altitude than those of the Brazilian case.
  
 \paragraph{High frequency channels (18-20)}
 Do the same for channels 18-20.
@@ -138,6 +203,12 @@ Again, plot spectra for the tropical sounding, this time for two nadir angles θ
 
 \subsection{Weighting Functions A}
 Compute and plot the weighting functions for channels 3-10 for both soundings (same plot, use colors and/or dashes to distinguish between soundings).  How do the weighting functions differ between the two cases?
+
+\begin{itemize}
+\item The weighting functions have stronger peaks in Brazil above 10km
+\item The weighting functions have stronger in Canada below 10km
+\item The altitude of peak absorption is lower in Canada in every case (channel 2 and 3 peak at surface)
+\end{itemize}
 
 \begin{figure}
 	\centering
@@ -169,7 +240,26 @@ Compute and plot (on the same plot) the complete spectra of microwave brightness
 
 \subsubsection{Surface Temperature}
 
+The Brazilian surface temperature is 296.75 \degree{K}.
+
+The Canadian surface temperature is 254.05 \degree{K}.
+
+The surface temperature in Canada is much colder than in Brazil, which by Stephan-Boltzmann's law translates to nearly 85\% more emitted broadband flux in Brazil compared to Canada.
+This effect is evident in the satellite spectrum where at the lowest frequencies the atmosphere should be transparent.
+The resulting brightness temperatures are about half the actual temperature.
+This is expected because the emissivity of the surface was assumed to be 50\% and Raleigh-Jean's approximation allows the direct application of emissivity to brightness temperatures in the microwave band.
+
 \subsubsection{Temperature Profile}
+
+it appears that Canadian temperatures are warmer than Brazilian temperatures at 17.5 km.
+
+Below tropopause temps are colder in canada
+
+In the weighting functions you can see the altitude contributing the most to absorption and emission. Therefore, brightness temperatures will reflect the physical temperature of that layer.
+
+In channel 18, corresponding to 185 GHz, the altitude of peak absorption is located at about 10km in brazil and 3km in canada. If brightness temperature is read at 185 GHz, it comes out to about 240K for brazil and canada. This matches the temperatures in the profile measured at the altitudes of peak emission, which is to say that the radiative transfer model is working.
+
+You can see the canadian brightness temperature creep up and brazilian temp dimish as continuom absorption at higher frequences. Here absorption is mostly governed by the water vapor continuum
 
 
 \begin{figure}
@@ -179,9 +269,21 @@ Compute and plot (on the same plot) the complete spectra of microwave brightness
 	\label{fig:tdry}
 \end{figure}
 
-(b) differences in the atmospheric temperature profile
 \subsubsection{Humidity}
-(c) differences in the atmospheric humidity profile.
+
+Brazil has much more moisture than Canada
+
+Water vapor concentrated in the troposphere and peaking at a few km altitude.
+
+Brazil total precipitable water much greater
+
+brazil: 52.22 kg/$m^2$
+
+canada: 3.12 kg/$m^2$
+
+Water vapor is a strong absorber, it has one particularly strong band at 183 GHz
+
+Oxygen is responsibile for the bands seen at 20, 60, and 118 GHz
 
 \begin{figure}
 	\centering
@@ -193,7 +295,9 @@ Compute and plot (on the same plot) the complete spectra of microwave brightness
 \subsection{Emissivity}
 
 
-\begin{figure}
+\begin{figure}Most of the difference occurs at lower frequencies
+The received brightness temperature is much higher when viewed at a slant. With the greater optical distance, a much larger component of brightness temperature seems to be coming from the surface. Reflected brightness temperatures off the surface are presumed to be optically thicker as well. This all translates to a greater amount of flux being available at the surface which can be detected by the satellite throught the relatively transparent atmosphere.
+Oxygen absorption at 60 GHz remains about constant. Most radiation in this band is absorbed at high altitudes (in excess of 20km) as can be seen in the channel 10 weighting function.
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/brazil_emiss}
 	\caption{Brazil emissivity}
@@ -227,6 +331,14 @@ Repeat the above for the polar sounding and describe what changes relative to th
 Again, plot spectra for the tropical sounding, this time for two nadir angles θ:  0 degrees and 55 degrees.  Discuss the resulting differences.
 \subsubsection{$\theta = 0 \degree{} $}
 \subsubsection{$\theta = 55 \degree{} $}
+
+Most of the difference occurs at lower frequencies
+
+The received brightness temperature is much higher when viewed at a slant. With the greater optical distance, a much larger component of brightness temperature seems to be coming from the surface. 
+
+Reflected brightness temperatures off the surface are presumed to be optically thicker as well. This all translates to a greater amount of flux being available at the surface which can be detected by the satellite throught the relatively transparent atmosphere.
+
+Oxygen absorption at 60 GHz remains about constant. Most radiation in this band is absorbed at high altitudes (in excess of 20km) as can be seen in the channel 10 weighting function.
 
 
 \section{Conclusion}
