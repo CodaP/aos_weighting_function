@@ -24,6 +24,9 @@
 
 \journal{jamc}
 \usepackage{gensymb}
+\usepackage{graphicx} 
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 %  Please choose a journal abbreviation to use above from the following list:
 % 
 %   jamc     (Journal of Applied Meteorology and Climatology)
@@ -100,6 +103,8 @@ These optical depths are integrated and transformed to total monochromatic trans
 
 \subsection{Atmospheric Profile}
 
+For all experiments, surface temperature was assumed equal to the mean temperature of the 
+
 \subsection{Layers}
 
 \subsection{Absorption}
@@ -133,19 +138,76 @@ Again, plot spectra for the tropical sounding, this time for two nadir angles θ
 
 \subsection{Weighting Functions A}
 Compute and plot the weighting functions for channels 3-10 for both soundings (same plot, use colors and/or dashes to distinguish between soundings).  How do the weighting functions differ between the two cases?
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/weighting_a}
+	\caption{thing1}
+	\label{fig:weighting_a}
+\end{figure}
+
 \subsection{Weighting Functions B}
 Do the same for channels 18-20.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/weighting_b}
+	\caption{thing2}
+	\label{fig:weighting_b}
+\end{figure}
+
 \subsection{Spectra}
 Compute and plot (on the same plot) the complete spectra of microwave brightness temperature for the two soundings — 0.1 to 300 GHz at intervals of 0.1 GHz.   Describe the differences in results.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/spec}
+	\caption{spectrum}
+	\label{fig:spec}
+\end{figure}
+
 \subsubsection{Surface Temperature}
-Attribute differences to (a) differences in the surface temperature
+
 \subsubsection{Temperature Profile}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/tdry}
+	\caption{Temperature}
+	\label{fig:tdry}
+\end{figure}
+
 (b) differences in the atmospheric temperature profile
 \subsubsection{Humidity}
 (c) differences in the atmospheric humidity profile.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/qbar}
+	\caption{Specific Humidity}
+	\label{fig:qbar}
+\end{figure}
+
 \subsection{Emissivity}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/brazil_emiss}
+	\caption{Brazil emissivity}
+	\label{fig:bemiss}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/canada_emiss}
+	\caption{Canada emissivity}
+	\label{fig:cemiss}
+\end{figure}
+
 \subsubsection{$\epsilon = 1$}
 For just the tropical sounding, plot the spectra for two cases:  emissivity equal to 1  and emissivity equal to 0.5.
 \subsubsection{$\epsilon = 0.5$}
@@ -153,6 +215,15 @@ What do your results tell you about the ranges of frequencies for which the atmo
 Repeat the above for the polar sounding and describe what changes relative to the previous results.
 
 \subsection{Elevation}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/brazil_elevation}
+	\caption{Elevation angle}
+	\label{fig:elevation}
+\end{figure}
+
 Again, plot spectra for the tropical sounding, this time for two nadir angles θ:  0 degrees and 55 degrees.  Discuss the resulting differences.
 \subsubsection{$\theta = 0 \degree{} $}
 \subsubsection{$\theta = 55 \degree{} $}
@@ -168,59 +239,6 @@ Again, plot spectra for the tropical sounding, this time for two nadir angles θ
 
  \bibliographystyle{ametsoc2014}
  \bibliography{references}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TABLES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[h]
-\caption{This is a sample table caption and table layout.}\label{t1}
-\begin{center}
-\begin{tabular}{ccccrrcrc}
-\topline
-$N$ & $X$ & $Y$ & $Z$\\
-\midline
- 0000 & 0000 & 0010 & 0000 \\
- 0005 & 0004 & 0012 & 0000 \\
- 0010 & 0009 & 0020 & 0000 \\
- 0015 & 0016 & 0036 & 0002 \\
- 0020 & 0030 & 0066 & 0007 \\
- 0025 & 0054 & 0115 & 0024 \\
-\botline
-\end{tabular}
-\end{center}
-\end{table}
-%
-
-\begin{table}
-\appendcaption{A1}{Here is the appendix table caption.}
-\centering
-\begin{tabular}{ccc}
-\topline
-$1$ & $2$ & $3$ \\
-\midline
-a&b&c \\
-d&e&f \\
-\botline
-\end{tabular}
-\end{table}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% FIGURES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\begin{figure}
-\centerline{(illustration here)}
-\appendcaption{A1}{Here is the appendix figure caption.}
-\end{figure}
-
-\begin{figure}
-\centerline{(illustration here)}
-\appendcaption{B1}{Here is the appendix figure caption.}
-\end{figure}
-
-
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
