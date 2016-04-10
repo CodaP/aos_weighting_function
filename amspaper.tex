@@ -160,7 +160,7 @@ This is derived from a form of the hydrostatic equation rather than being obtain
 \subsection{Absorption}
 
 The total optical depth, $\tau$, of each layer is computed by adding optical depth components from dry air and water vapor.
-These components are computed from the product of air mass and mass extinction coefficient.
+These components are computed from the product of gas partial mass and mass extinction coefficient.
 
 \subsection{Transmission}
 
@@ -181,16 +181,15 @@ The Arctic case uses a radiosonde launched from Churchill, Canada at 12Z on the 
 The Tropical radiosonde was launched from Boa Vista, Brazil, at the same date and time.
 
 \paragraph{Low frequency channels (3-10) Module A }
-Shown in \autoref{fig:weighting_a} are the weighting functions for the AMSU-A channels for both the Canadian and Brazilian cases.
-These results show some similarity between the cases in the relative magnitudes and distributions of weights.
-However, the peak weights in Canadian case almost always occur at a lower altitude than those of the Brazilian case.
  
 \paragraph{High frequency channels (18-20)}
-Do the same for channels 18-20.
+
 
 \paragraph{Spectra}
 Compute and plot (on the same plot) the complete spectra of microwave brightness temperature for the two soundings — 0.1 to 300 GHz at intervals of 0.1 GHz.   Describe the differences in results. 
 Attribute differences to (a) differences in the surface temperature, (b) differences in the atmospheric temperature profile, and (c) differences in the atmospheric humidity profile.
+
+The lack of continuum absorption in the Canadian atmosphere is supported by the fact that little water vapor is present in that case.
 
 \paragraph{Emissivity}
 For just the tropical sounding, plot the spectra for two cases:  emissivity equal to 1  and emissivity equal to 0.5.  What do your results tell you about the ranges of frequencies for which the atmosphere is opaque?
@@ -201,14 +200,13 @@ Again, plot spectra for the tropical sounding, this time for two nadir angles θ
 
 \section{Results}
 
-\subsection{Weighting Functions A}
-Compute and plot the weighting functions for channels 3-10 for both soundings (same plot, use colors and/or dashes to distinguish between soundings).  How do the weighting functions differ between the two cases?
+\subsection{AMSU-A Weighting Functions}
 
-\begin{itemize}
-\item The weighting functions have stronger peaks in Brazil above 10km
-\item The weighting functions have stronger in Canada below 10km
-\item The altitude of peak absorption is lower in Canada in every case (channel 2 and 3 peak at surface)
-\end{itemize}
+Shown in \autoref{fig:weighting_a} are the weighting functions for the AMSU-A channels for both the Canadian and Brazilian cases.
+These results show some similarity between the cases in the relative magnitudes and distributions of weights.
+However, the peak weights in Canadian case almost always occur at a lower altitude than those of the Brazilian case.
+These depressed heights indicate a comparatively more transparent Canadian atmosphere.
+Some channels are much more opaque than others, despite all inhabiting a relatively narrow bandwidth.
 
 \begin{figure}
 	\centering
@@ -217,8 +215,12 @@ Compute and plot the weighting functions for channels 3-10 for both soundings (s
 	\label{fig:weighting_a}
 \end{figure}
 
-\subsection{Weighting Functions B}
-Do the same for channels 18-20.
+\subsection{AMSU-B Weighting Functions}
+
+The weights shown in \autoref{fig:weighting_b} demonstrate that little absorption occurs in the upper atmosphere at these higher frequencies.
+The difference between the weight-peak altitude in the Brazilian and Canadian atmospheres is much more pronounced here than with the AMSU-A channels.
+These data would suggest that although a high amount of absorption occurs, it is relegated to the troposphere.
+It is likely that almost all absorption in these bands is driven by water vapor, which explains why radiation is able to propagate farther in the dry Canadian atmosphere before it is extinguished.
 
 \begin{figure}
 	\centering
@@ -228,8 +230,14 @@ Do the same for channels 18-20.
 \end{figure}
 
 \subsection{Spectra}
-Compute and plot (on the same plot) the complete spectra of microwave brightness temperature for the two soundings — 0.1 to 300 GHz at intervals of 0.1 GHz.   Describe the differences in results.
 
+The predicted spectra for Brazil and Canada is shown in \autoref{fig:spec}.
+Excluding the strongest absorption lines, the predicted brightness temperatures observed from space for the Brazilian and Canadian cases differ significantly.
+The average values of brightness temperature for the Brazilian case are nearly 40~K greater than those from Canada.
+Additionally, there is a downward slope of brightness temperatures from Brazil as frequency increases.
+This effect is not apparent in the Canadian case.
+Furthermore, the absorption band of oxygen at 22~GHz does not produce a noticeable effect in the Canadian brightness temperatures, but it appears as a small dip in those from Brazil.
+Within the strongest absorption lines, these spectra look remarkably similar.
 
 \begin{figure}
 	\centering
@@ -240,26 +248,24 @@ Compute and plot (on the same plot) the complete spectra of microwave brightness
 
 \subsubsection{Surface Temperature}
 
-The Brazilian surface temperature is 296.75 \degree{K}.
-
-The Canadian surface temperature is 254.05 \degree{K}.
-
-The surface temperature in Canada is much colder than in Brazil, which by Stephan-Boltzmann's law translates to nearly 85\% more emitted broadband flux in Brazil compared to Canada.
-This effect is evident in the satellite spectrum where at the lowest frequencies the atmosphere should be transparent.
-The resulting brightness temperatures are about half the actual temperature.
-This is expected because the emissivity of the surface was assumed to be 50\% and Raleigh-Jean's approximation allows the direct application of emissivity to brightness temperatures in the microwave band.
+The Brazilian surface temperature is 296.75~\degree{K}, wherease the Canadian surface temperature is 254.05~\degree{K}.
+The surface temperature in Canada is much colder than in Brazil.
+This effect is evident in the satellite spectrum at the lowest frequencies, where the atmosphere should be transparent.
+The resulting brightness temperatures are nearly identical to the actual temperatures.
+This correlation would suggest that both atmospheres are highly transparent in these bands, and changes in brightness temperature emitted from the surface produce a strong effect in predicted brightness temperatures.
+However, surface temperature cannot explain the difference in brightness temperature response to frequency or the values within absorption bands.
 
 \subsubsection{Temperature Profile}
 
-it appears that Canadian temperatures are warmer than Brazilian temperatures at 17.5 km.
+It appears that Canadian temperatures are warmer than Brazilian temperatures at 17.5~km.
+But, as expected, temperatures are colder in Canada below tropopause.
+In the weighting functions you can see the altitude contributing the most to absorption and emission. Therefore, brightness temperatures will tend toward the physical temperature of that particular layer rather than the others.
+In channel~18, corresponding to 184~GHz, the altitude of peak absorption is located at about 10~km in Brazil and 3~km in Canada.
+If brightness temperature is read at 184~GHz, it comes out to about 240~K for both Brazil and Canada.
+This matches the temperatures in the profile measured at the altitudes of peak emission, which confirms that the radiative transfer model is consistent.
 
-Below tropopause temps are colder in canada
-
-In the weighting functions you can see the altitude contributing the most to absorption and emission. Therefore, brightness temperatures will reflect the physical temperature of that layer.
-
-In channel 18, corresponding to 185 GHz, the altitude of peak absorption is located at about 10km in brazil and 3km in canada. If brightness temperature is read at 185 GHz, it comes out to about 240K for brazil and canada. This matches the temperatures in the profile measured at the altitudes of peak emission, which is to say that the radiative transfer model is working.
-
-You can see the canadian brightness temperature creep up and brazilian temp dimish as continuom absorption at higher frequences. Here absorption is mostly governed by the water vapor continuum
+You can see the Brazilian brightness temperatures diminish as continuum absorption increases with higher frequencies.
+Outside major oxygen and water vapor absorption bands, absorption is mostly governed by the water vapor continuum absorption.
 
 
 \begin{figure}
