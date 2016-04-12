@@ -77,7 +77,7 @@
 %
 % Enter your Abstract here
 
-\abstract{I make a radiative transfer model for AMSU and study things} 
+\abstract{In this paper the construction of a microwave radiative transfer model is presented.  Atmospheric weighting functions are derived and graphically depicted. Experiments are conducted on model parameters such as surface emissivity and elevation angle. Each experimental result compares the effects of the parameters on two locations, one tropical and the other Arctic.} 
 
 \begin{document}
 
@@ -104,7 +104,36 @@ By combining these derived opacities with atmospheric and surface temperature in
 
 \section{Methods}
 
-For all experiments, surface temperature was assumed equal to the temperature of the lowest radiosonde measurement.
+\subsection{Atmospheric Profile}
+
+Before an atmospheric profile can be computed, environmental data must be ingested from a radiosonde file.
+Contained in the radiosonde data is a time-series of temperatures, dew points, and pressures recorded as the radiosonde ascends. The state of the atmosphere is assumed to be static so that a these measurements describe a vertical profile. This profile is interpolated to a finer resolution and a more uniform grid by ensuring each successive level falls within a maximum pressure difference of 90\% and maximum temperature change of 1 \degree{}C.
+
+\subsection{Layers}
+
+A model atmosphere is partitioned into homogeneous atmospheric layers, each possessing the mean value of two level-variables and a geometric height difference between levels.
+The geometric height associated with each layer is a required to calculate optical depths, and these are derived from a form of the hydrostatic equation rather than being obtained from the radiosonde's GPS altitude.
+
+\subsection{Absorption}
+
+The total optical depth, $\tau$, of each layer is computed by adding optical depth components from dry air and water vapor.
+These components are computed individually from the product of the partial mass of each gas and its mass extinction coefficient.
+The mass extinction coefficient is dependent on temperature, pressure, and water vapor mixing ratio.
+
+\subsection{Transmission}
+
+An integral over optical depths is performed by computing a cumulative sum.
+According to Beer's law, the antilogarithm of these depths results in the total transmission to that layer from either the top-of-atmosphere or surface, depending on the direction of the cumulative sum.
+By Schwarzschild's equation, the weighting function takes the value of the derivative of transmission at each level.
+A discrete difference is calculated to approximate this derivative.
+
+\subsection{Weights}
+
+The resulting weights associated with each layer can finally be divided by geometric depth their respective layers to derive the weight as a function of geometric depth.
+
+\subsection{Experiments}
+
+For all experiments, surface temperature was assumed to be equal to the temperature of the lowest radiosonde measurement.
 In all cases except the emissivity experiments, the surface was also assumed to radiate as a blackbody at thermal equilibrium. That is, the emissivity is equal to 1 at all wavelengths.
 The frequencies corresponding to the referenced AMSU channels are defined in \autoref{tab:amsua} and \autoref{tab:amsub}.
 
@@ -145,49 +174,15 @@ The frequencies corresponding to the referenced AMSU channels are defined in \au
 	\label{tab:amsub}
 \end{table}
 
-\subsection{Atmospheric Profile}
-
-Before an atmospheric profile can be computed, environmental data must be ingested from a radiosonde file.
-Contained in the radiosonde data is a time-series of temperatures, dew points, and pressures recorded as the radiosonde ascends. The state of the atmosphere is assumed to be static so that a these measurements describe a vertical profile. This profile is interpolated to a finer resolution and a more uniform grid by ensuring each successive level falls within a maximum pressure difference of 90\% and maximum temperature change of 1 \degree{}C.
-
-\subsection{Layers}
-
-A model atmosphere is partitioned into homogeneous atmospheric layers, each possessing the mean value of two level-variables and a geometric height difference between levels.
-The geometric height associated with each layer is a required to calculate optical depths, and these are derived from a form of the hydrostatic equation rather than being obtained from the radiosonde's GPS altitude.
-
-\subsection{Absorption}
-
-The total optical depth, $\tau$, of each layer is computed by adding optical depth components from dry air and water vapor.
-These components are computed individually from the product of the partial mass of each gas and its mass extinction coefficient.
-The mass extinction coefficient is dependent on temperature, pressure, and water vapor mixing ratio.
-
-\subsection{Transmission}
-
-An integral over optical depths is performed by computing a cumulative sum.
-According to Beer's law, the antilogarithm of these depths results in the total transmission to that layer from either the top-of-atmosphere or surface, depending on the direction of the cumulative sum.
-By Schwarzschild's equation, the weighting function takes the value of the derivative of transmission at each level.
-A discrete difference is calculated to approximate this derivative.
-
-\subsection{Weights}
-
-The resulting weights associated with each layer can finally be divided by geometric depth their respective layers to derive the weight as a function of geometric depth.
-
-\subsection{Experiments}
-
 \paragraph*{Case Study} For the following experiments, two cases of atmosphere will be compared.
 One case will study the Arctic atmosphere and the other will study the Tropical.
 The Arctic case uses a radiosonde launched from Churchill, Canada at 12Z on the first of March, 2012.
 The Tropical radiosonde was launched from Boa Vista, Brazil, at the same date and time.
 
-\paragraph{Low frequency channels (3-10) Module A }
+\paragraph{Weighting Functions }
 
-Another characteristic of the weighting functions is the relative strengths of the weights.
-The area under each weighting function is equal to the total absorption from the surface to the top of the atmosphere.
- 
-\paragraph{High frequency channels (18-20)}
-
-For a baseline test, the weighting functions for each of the channels in the AMSU-A module.
-These are computed for both locations and the results are shown in \autoref{fig:weighting_a}.
+For a baseline test, the weighting functions for each of the channels in the AMSU-A and AMSU-B module.
+These are computed for both locations.
 
 \paragraph{Spectra}
 
@@ -205,27 +200,26 @@ The resulting spectra was plotted.
 
 \subsection{AMSU-A Weighting Functions}
 
-There are two main differences seen in the weighting functions produced by a Tropical and Arctic atmosphere.
+There are generally two main differences that can be seen in weighting functions.
 The first difference is the location of the most visible layer.
 Because it has the greatest effect on the transmission, the most visible layer appears on the weighting function as a peak.
-Variations in the temperature of this most visible layer has the most effect on radiation escaping to space.
+Variations in the temperature of this most-visible layer have the greatest effect of all layers on radiation escaping to space.
 Therefore, the altitude of this layer plays a role in determining the output radiation.
-Here, the Canadian weighting functions seem to have a depressed peak altitude when compared with the Brazilian case.
 Depending on the temperature lapse rate, the relative locations of the most visible layers can either increase or decrease the radiation output at the top-of-atmosphere.
+Another characteristic of the weighting functions is the relative strengths of the weights.
+The area under each weighting function is equal to the total absorption from the surface to the top of the atmosphere.
+Total absorption dictates the influence that the surface has in the radiative output.
 
 Shown in \autoref{fig:weighting_a} are the weighting functions for the AMSU-A channels for both the Canadian and Brazilian cases.
 These results show some similarity between the cases in the relative magnitudes and distributions of weights.
 However, the peak weights in Canadian case almost always occur at a lower altitude than those of the Brazilian case.
-These depressed heights indicate a comparatively more transparent Canadian atmosphere.
-Some channels are much more opaque than others, despite all inhabiting a relatively narrow bandwidth.
-
-Total absorption dictates the influence that the surface has in the radiative output.
-As shown in the graph, Canada has less area under each curve than Brazil, and therefore a higher transmission.
+Also shown in the graph, Canada has less area under each curve than Brazil.
+Therefore, it can be concluded that Canada has a higher transmission in these channels.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/weighting_a}
-	\caption{thing1}
+	\caption{The AMSU-A channel weighting functions for both Brazil and Canada}
 	\label{fig:weighting_a}
 \end{figure}
 
@@ -243,7 +237,7 @@ It is likely that almost all absorption in these bands is driven by water vapor,
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/weighting_b}
-	\caption{thing2}
+	\caption{The AMSU-B channel weighting functions for both Brazil and Canada}
 	\label{fig:weighting_b}
 \end{figure}
 
@@ -263,7 +257,7 @@ Within the strongest absorption lines, these spectra look remarkably similar.
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/spec}
-	\caption{spectrum}
+	\caption{The predicted brightness temperature spectra at the top-of-atmosphere}
 	\label{fig:spec}
 \end{figure}
 
@@ -294,7 +288,7 @@ The evidence of warmer Canadian brightness temperatures is consistent with warme
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/tdry}
-	\caption{Temperature}
+	\caption{Brazilian and Canadian temperature profile}
 	\label{fig:tdry}
 \end{figure}
 
@@ -319,7 +313,7 @@ The baseline brightness temperatures in the Brazilian case remains relatively co
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/qbar}
-	\caption{Specific Humidity}
+	\caption{Brazilian and Canadian specific humidity profile}
 	\label{fig:qbar}
 \end{figure}
 
@@ -329,7 +323,7 @@ The baseline brightness temperatures in the Brazilian case remains relatively co
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/brazil_emiss}
-	\caption{Brazil emissivity}
+	\caption{Brightness temperature spectra for Brazil when emissivity is modified}
 	\label{fig:bemiss}
 \end{figure}
 
@@ -337,7 +331,7 @@ The baseline brightness temperatures in the Brazilian case remains relatively co
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/canada_emiss}
-	\caption{Canada emissivity}
+	\caption{Brightness temperature spectra for Canada when emissivity is modified}
 	\label{fig:cemiss}
 \end{figure}
 
@@ -372,24 +366,33 @@ This is still captured in \autoref{fig:elevation_weight} by the comparatively la
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/brazil_elevation}
-	\caption{Elevation angle}
+	\caption{Brightness temperature spectra for Brazil when slant angle is modified}
 	\label{fig:elevation}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/elevation_weights}
-	\caption{Elevation weighting function}
+	\caption{Weighting functions for Brazil when slant angle is modified}
 	\label{fig:elevation_weight}
 \end{figure}
 
 \section{Conclusion}
 
 From the results it was shown that the brightness temperature received in space is primarily a composition of two sources.
-First there is the surface emission
-Depends on the emissivity of surface and the opacity of the atmosphere.
-Then there is the atmospheric emission
-Depends on the temperature and opacity of atmosphere layers.
+First, there is the surface emission, some of which is able to traverse the atmosphere and directly contribute to the observed brightness temperature.
+Some of surface emission in surfaces with non-unity emissivities originates from reflected radiation, but the amount of downwelling radiation is also dependent on atmospheric transmission.
+It was shown that if the surface emission is severely decreased, such as when emissivity is modified, the effects are largest if the atmosphere is transparent.
+
+The other contributor to observed brightness temperature is the atmospheric emission.
+It primarily depends on the temperature and opacity of atmosphere layers.
+Layers may be made more opaque in the microwave band by the presence of water vapor.
+Certain regions of spectra also lie within the absorption bands of oxygen and experience elevated absorption.
+
+Both of these sources are difficult to characterize.
+Surface emissivity is dependent on many factors including, geographic features, composition, vegetation, and even temperature.
+Likewise, atmospheric profiles are only temporarily valid and radiosondes only observe in a single location at a time.
+High-resolution scanning instruments mean that a huge portion of observations cannot be associated with the sparse profile data, making derivations imprecise.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % REFERENCES
